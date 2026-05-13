@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>260513-三角洲行动海外运营实习生笔试-张宸</title>
+  <style>
+    /* ===== 全局重置与基础样式 ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', 'Microsoft YaHei', '等线', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2c2c2c;
+      background: #f5f6fa;
+    }
+
+    /* ===== 页面容器 ===== */
+    .page-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #ffffff;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* ===== 封面/标题区域 ===== */
+    .doc-header {
+      background: linear-gradient(135deg, #1a237e 0%, #1565c0 60%, #3370ff 100%);
+      padding: 48px 56px 40px 56px;
+      color: #ffffff;
+    }
+
+    .doc-file-title {
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .doc-main-title {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 28px;
+      color: #ffffff;
+    }
+
+    .doc-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+
+    .doc-meta-item {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .doc-meta-item strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* ===== 目录导航 ===== */
+    .toc-section {
+      background: #f8f9ff;
+      border-bottom: 1px solid #e3e8f0;
+      padding: 28px 56px;
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #3370ff;
+      margin-bottom: 14px;
+    }
+
+    .toc-list {
+      list-style: none;
+      column-count: 2;
+      column-gap: 32px;
+    }
+
+    .toc-list li {
+      margin-bottom: 6px;
+    }
+
+    .toc-list a {
+      color: #3c4a6e;
+      text-decoration: none;
+      font-size: 13.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .toc-list a:hover {
+      color: #3370ff;
+    }
+
+    .toc-list .toc-h1 {
+      font-weight: 700;
+      color: #1a237e;
+      font-size: 14px;
+    }
+
+    .toc-list .toc-h2 {
+      padding-left: 16px;
+      color: #3c4a6e;
+    }
+
+    /* ===== 主内容区域 ===== */
+    .doc-body {
+      padding: 40px 56px 60px 56px;
+    }
+
+    /* ===== 一级标题 ===== */
+    h1.section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a237e;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3370ff;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    h1.section-title .num {
+      color: #3370ff;
+      font-weight: 700;
+    }
+
+    h1.section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* ===== 二级标题 ===== */
+    h2.subsection-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1565c0;
+      margin-top: 32px;
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 3px solid #3370ff;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    h2.subsection-title .num {
+      color: #3370ff;
+      font-weight: 700;
+    }
+
+    /* ===== 正文段落 ===== */
+    p.body-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #2c2c2c;
+      margin-bottom: 10px;
+    }
+
+    p.body-text.indent {
+      text-indent: 2em;
+    }
+
+    strong.highlight {
+      color: #1a237e;
+      font-weight: 600;
+    }
+
+    /* ===== 无序列表 ===== */
+    ul.doc-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 8px 0 16px 0;
+    }
+
+    ul.doc-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 15px;
+      line-height: 1.85;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+
+    ul.doc-list li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: #3370ff;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ===== 图片区域 ===== */
+    .image-block {
+      text-align: center;
+      margin: 24px 0 8px 0;
+    }
+
+    .image-block img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 13px;
+      color: #7a8ba0;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    /* ===== 表格 ===== */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 16px 0 24px 0;
+      border-radius: 6px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+    }
+
+    table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+      background: #ffffff;
+    }
+
+    table.doc-table th,
+    table.doc-table td {
+      border: 1px solid #dee0e3;
+      padding: 10px 14px;
+      vertical-align: top;
+      line-height: 1.75;
+    }
+
+    table.doc-table thead tr {
+      background: #e8eeff;
+    }
+
+    table.doc-table thead th {
+      font-weight: 700;
+      color: #1a237e;
+      text-align: center;
+    }
+
+    table.doc-table tbody tr:nth-child(even) {
+      background: #f8f9ff;
+    }
+
+    table.doc-table tbody tr:hover {
+      background: #eef2ff;
+    }
+
+    table.doc-table .col-label {
+      font-weight: 600;
+      color: #1565c0;
+      background: #f0f4ff;
+      white-space: nowrap;
+      width: 120px;
+    }
+
+    table.doc-table .col-label-sm {
+      font-weight: 600;
+      color: #1565c0;
+      background: #f0f4ff;
+      width: 90px;
+    }
+
+    /* ===== 空段落 / 分隔 ===== */
+    .spacer {
+      height: 14px;
+    }
+
+    /* ===== 页脚 ===== */
+    .doc-footer {
+      border-top: 1px solid #e3e8f0;
+      padding: 20px 56px;
+      text-align: center;
+      color: #aab4c8;
+      font-size: 12.5px;
+      background: #f8f9ff;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 700px) {
+      .doc-header, .toc-section, .doc-body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .doc-meta {
+        grid-template-columns: 1fr;
+      }
+      .toc-list {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ===== 封面区域 ===== -->
+  <div class="doc-header">
+    <div class="doc-file-title">260513-三角洲行动海外运营实习生笔试-张宸</div>
+    <div class="doc-main-title">《三角洲行动》"洲年庆"二次元受众拓盘方案</div>
+    <div class="doc-meta">
+      <div class="doc-meta-item"><strong>作答人：</strong>张宸</div>
+      <div class="doc-meta-item"><strong>联系方式：</strong>19895808308</div>
+      <div class="doc-meta-item"><strong>面试岗位：</strong>《三角洲行动》海外运营实习生</div>
+      <div class="doc-meta-item"><strong>作答时间：</strong>2026年5月7日—5月13日</div>
+    </div>
+  </div>
+
+  <!-- ===== 目录 ===== -->
+  <div class="toc-section">
+    <div class="toc-title">目录</div>
+    <ul class="toc-list">
+      <li><a href="#section1" class="toc-h1">1. 方案背景及目标</a></li>
+      <li><a href="#section1-1" class="toc-h2">1.1 三角洲行动玩法吸引力及门槛</a></li>
+      <li><a href="#section1-2" class="toc-h2">1.2 "洲年庆"节点作用</a></li>
+      <li><a href="#section1-3" class="toc-h2">1.3 "洲年庆"节点二次元用户拓盘目标</a></li>
+      <li><a href="#section2" class="toc-h1">2. FPS搜打撤及二次元游戏用户画像</a></li>
+      <li><a href="#section2-1" class="toc-h2">2.1 FPS搜打撤核心用户画像</a></li>
+      <li><a href="#section2-2" class="toc-h2">2.2 二次元游戏用户画像</a></li>
+      <li><a href="#section2-3" class="toc-h2">2.3 两类用户的群体联系</a></li>
+      <li><a href="#section3" class="toc-h1">3. "洲年庆"二次元受众拓盘活动设计</a></li>
+      <li><a href="#section3-1" class="toc-h2">3.1 新手引导流程优化</a></li>
+      <li><a href="#section3-2" class="toc-h2">3.2 多人合作闯关玩法</a></li>
+      <li><a href="#section3-3" class="toc-h2">3.3 二次元IP异业联动</a></li>
+      <li><a href="#section3-4" class="toc-h2">3.4 线上线下社群活动</a></li>
+      <li><a href="#section4" class="toc-h1">4. 总结</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== 正文 ===== -->
+  <div class="doc-body">
+
+    <!-- ===== 第1节 ===== -->
+    <h1 class="section-title" id="section1"><span class="num">1.</span>方案背景及目标</h1>
+
+    <h2 class="subsection-title" id="section1-1"><span class="num">1.1</span>三角洲行动玩法吸引力及门槛</h2>
+
+    <p class="body-text indent">当前，三角洲行动作为一款持续稳定运营近两年的热门FPS品类游戏产品，其国服DAU已突破4100万大关（截至2026年1月）。<strong class="highlight">对于核心FPS用户而言，其核心吸引力在于</strong>：</p>
+
+    <ul class="doc-list">
+      <li>"烽火地带"搜打撤（摸金）玩法以搜集和撤离为核心机制，局内外游戏资产达成联动，与传统FPS双方强对抗及局内成长为主的体验做出<strong class="highlight">差异化</strong>，具有较强的<strong class="highlight">新鲜感</strong>；</li>
+      <li>PVP对局具有较强随机性和策略性，不仅具有高度的<strong class="highlight">可复玩性</strong>，同时自带<strong class="highlight">社交传播属性</strong>；</li>
+      <li>优秀的地图设计、良好的枪械交互手感及不同玩法模式中提供的高度拟真战场环境，提供<strong class="highlight">沉浸式体验</strong>；</li>
+      <li>具有特色的干员技能设计；</li>
+      <li>鲜明且高度统一的美术风格与良好的交互体验。</li>
+    </ul>
+
+    <p class="body-text indent">这些优势能够有效吸引核心FPS用户游玩及留存，也是长线稳定运营的基础。然而，<strong class="highlight">对于非FPS用户，尤其是二次元游戏品类的用户而言，三角洲的玩法存在一定门槛</strong>：</p>
+
+    <ul class="doc-list">
+      <li>复杂地图信息与战斗交互的<strong class="highlight">理解成本较高</strong>；</li>
+      <li>局内外游戏资源联动的机制循环对二次元游戏用户<strong class="highlight">较为陌生</strong>；</li>
+      <li>游戏对局失败的惩罚容易在前期引发<strong class="highlight">挫败感</strong>；</li>
+      <li>"重玩法，轻角色"的游戏框架和二次元游戏用户"重角色，轻玩法"的<strong class="highlight">常规认知预期有所差别</strong>。</li>
+    </ul>
+
+    <h2 class="subsection-title" id="section1-2"><span class="num">1.2</span>"洲年庆"节点作用</h2>
+
+    <p class="body-text indent">作为三角洲行动的周年节点活动，"洲年庆"在<strong class="highlight">用户回流、用户拓盘、品牌传播</strong>等方面承担重要的职能：</p>
+
+    <ul class="doc-list">
+      <li>通过赛季玩法更新、活跃奖励、福利回馈、邀请回归福利等活动<strong class="highlight">稳固原有用户，提升用户活跃，并吸引老用户回流</strong>；</li>
+      <li>通过注册抽奖等活动吸引新用户，并通过异业联动等活动<strong class="highlight">拓宽原有用户群体，吸引泛用户，提升社区热度，进行游戏破圈</strong>；</li>
+    </ul>
+
+    <div class="image-block">
+      <img src="images/image1.png" alt="2025年洲年庆拉新回流抽奖活动页面截图">
+    </div>
+    <p class="image-caption">2025年"洲年庆"拉新回流抽奖活动页面截图</p>
+
+    <ul class="doc-list">
+      <li>通过预告新玩法及游戏系统优化等未来赛季投放内容，<strong class="highlight">实现品牌强化，并维持用户预期，促进用户长期投入</strong>。</li>
+    </ul>
+
+    <h2 class="subsection-title" id="section1-3"><span class="num">1.3</span>"洲年庆"节点二次元用户拓盘目标</h2>
+
+    <p class="body-text">结合三角洲行动已有的核心吸引力、对二次元品类游戏用户的门槛，以及"洲年庆"的节点功能，未来"洲年庆"在二次元用户拓盘方面，预期达成以下目标：</p>
+
+    <ul class="doc-list">
+      <li>通过降低新用户入门和学习门槛，<strong class="highlight">提升二次元泛用户留存率</strong>；</li>
+      <li>通过玩法和活动创新，强化三角洲世界观吸引力，<strong class="highlight">提升二次元用户长期留存意愿</strong>；</li>
+      <li>通过异业联动及美化装饰功能创新，<strong class="highlight">提高二次元用户付费意愿和付费率</strong>；</li>
+      <li>通过社群及游戏内外具有二次元风格的运营活动，强化社群传播及内容生态创新<strong class="highlight">，提升二次元用户的品牌认同和品牌忠诚感</strong>。</li>
+    </ul>
+
+    <div class="spacer"></div>
+
+    <!-- ===== 第2节 ===== -->
+    <h1 class="section-title" id="section2"><span class="num">2.</span>FPS搜打撤及二次元游戏用户画像</h1>
+
+    <h2 class="subsection-title" id="section2-1"><span class="num">2.1</span>FPS搜打撤核心用户画像</h2>
+
+    <p class="body-text">对于FPS核心玩家而言，三角洲行动的核心在于"烽火地带"的搜打撤核心循环。<strong class="highlight">热衷于这一玩法的FPS核心用户，往往具有以下特点</strong>：</p>
+
+    <ul class="doc-list">
+      <li>竞技偏好：偏好强竞技性内容；</li>
+      <li>题材偏好：热衷军事题材作品；</li>
+      <li>游玩偏好：追求游戏操作与技术，注重游戏玩法趣味性，能够接受技巧需求高的游戏玩法；</li>
+      <li>社交偏好：偏好游戏内社交互动；</li>
+      <li>社群偏好：关注电竞赛事和游戏主播的直播。</li>
+    </ul>
+
+    <h2 class="subsection-title" id="section2-2"><span class="num">2.2</span>二次元游戏用户画像</h2>
+
+    <p class="body-text">对于二次元游戏用户而言，他们往往具有以下特征：</p>
+
+    <ul class="doc-list">
+      <li>竞技偏好：偏好弱竞技性或非对抗性内容；</li>
+      <li>题材偏好：热衷ACGN动漫文化；</li>
+      <li>游玩偏好：追求内容消费和收集养成（游戏叙事、角色互动等），注重视觉体验与情感连接，较少追求难度较高的玩法；</li>
+      <li>社交偏好：轻度社交；</li>
+      <li>社群偏好：关注二创内容和线下漫展等具有同好性质的活动。</li>
+    </ul>
+
+    <h2 class="subsection-title" id="section2-3"><span class="num">2.3</span>两类用户的群体联系</h2>
+
+    <p class="body-text"><strong class="highlight">虽然两个用户群体存在诸多差异，但这并不意味着二次元游戏用户天然排斥FPS游戏品类和搜打撤玩法</strong>。以《尘白禁区》《卡拉彼丘》《少女前线2：追放》三款游戏为例，前两款为TPS游戏，第三款为战棋游戏，但都带有"枪械"与"射击"这两个核心要素。与FPS搜打撤游戏不同的是，<strong class="highlight">这三款游戏的核心特色在于二次元风格的美术、游戏叙事和与角色的情感连接，且"竞技性"在一定程度上受到了削弱</strong>。</p>
+
+    <div class="image-block">
+      <img src="images/image2.png" alt="尘白禁区游戏截图">
+    </div>
+    <p class="image-caption">尘白禁区游戏截图。除射击玩法外，该游戏以能够与角色互动为核心卖点</p>
+
+    <div class="image-block">
+      <img src="images/image3.png" alt="卡拉彼丘游戏截图">
+    </div>
+    <p class="image-caption">卡拉彼丘游戏截图。该游戏引入"弦化"（纸片人）玩法，具有较强的娱乐性</p>
+
+    <div class="image-block">
+      <img src="images/image4.png" alt="少女前线2：追放游戏宣传PV截图">
+    </div>
+    <p class="image-caption">少女前线2：追放游戏宣传PV截图。该游戏虽有枪械武器要素，但核心玩法是竞技性较低的战棋</p>
+
+    <p class="body-text"><strong class="highlight">综上所述，二次元用户并非排斥射击品类，而是更注重游戏在"射击"以外能否提供其他情绪价值。总体来看，二次元用户游玩FPS搜打撤的核心痛点在于</strong>：</p>
+
+    <ul class="doc-list">
+      <li>较高的<strong class="highlight">学习成本</strong>；</li>
+      <li>对局失败的较强<strong class="highlight">挫败感</strong>；</li>
+      <li>强竞技性的<strong class="highlight">不适应</strong>；</li>
+      <li>和游戏角色<strong class="highlight">情感连接较少</strong>。</li>
+    </ul>
+
+    <p class="body-text">因此，如果三角洲行动只强调"硬核射击"和"强竞技性"，则可能难以触达二次元用户。<strong class="highlight">如果能够通过角色塑造、轻量化活动与社交传播内容降低距离感，则有机会吸引一定数量的二次元用户尝试游戏。</strong></p>
+
+    <div class="spacer"></div>
+
+    <!-- ===== 第3节 ===== -->
+    <h1 class="section-title" id="section3"><span class="num">3.</span>"洲年庆"二次元受众拓盘活动设计</h1>
+
+    <h2 class="subsection-title" id="section3-1"><span class="num">3.1</span>新手引导流程优化</h2>
+
+    <p class="body-text"><strong class="highlight">当前，三角洲行动的新手引导尚未针对用户水平进行有差异化的引导</strong>。对于二次元游戏用户，初次游玩新手引导关难以掌握一些对局中较为关键的机制，例如装备耐久度、背包格扩充机制、物资稀有度区分等，<strong class="highlight">可能造成在游戏前期的对局失败次数较多，造成一定的挫败感，影响留存意愿</strong>。例如以下场景：</p>
+
+    <div class="image-block">
+      <img src="images/image5.png" alt="三角洲行动手机端新手教程关截图">
+    </div>
+    <p class="image-caption">三角洲行动手机端新手教程关截图。此处对于背包格数如何扩充、装备耐久、被替换的武器的子弹和配件可拆卸等机制没有进行详细说明</p>
+
+    <p class="body-text">因此，为了帮助二次元用户快速入门，掌握游戏关键机制，同时避免给有较多经验多FPS玩家过多引导负担，<strong class="highlight">可以采取针对性引导设计</strong>，具体流程如下：</p>
+
+    <div class="table-wrapper">
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>设计内容</th>
+            <th>二次元泛用户</th>
+            <th>FPS核心用户</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-label">进入新手教学关前</td>
+            <td colspan="2"><strong class="highlight">选择引导模式：【我是新手】或【我有经验】</strong>，分别对应二次元用户和FPS核心用户群体的教学引导关卡</td>
+          </tr>
+          <tr>
+            <td class="col-label">新手教学关进行中</td>
+            <td>
+              <strong class="highlight">在保留原有引导流程的基础上，增加机制教学节点</strong>：
+              <ul class="doc-list" style="margin-top:6px;">
+                <li>阵营教学：如何区分NPC和其他玩家；</li>
+                <li>武器类型和攻击方式教学：如何使用远程和近战武器；</li>
+                <li>装备耐久教学：通过引导玩家射击对手无装备部位来获取有较高耐久度的装备；</li>
+                <li>道具使用教学：设置情境，引导玩家使用急救包、手术包等道具；</li>
+                <li>背包扩展教学：引导玩家扩充背包容量；</li>
+                <li>物资稀有度教学：引导玩家通过颜色和价值等区分物资稀有度，获取高价值物资</li>
+              </ul>
+            </td>
+            <td>复用现有的新手引导关卡</td>
+          </tr>
+          <tr>
+            <td class="col-label">新手教学关结束后</td>
+            <td>在主界面保留一定天数的<strong class="highlight">新手引导关卡回顾入口</strong></td>
+            <td>复用现有的新手引导步骤</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-text">通过针对性、差异化的用户群体新手教学关引导，可以有效帮助二次元玩家了解关键游戏机制，降低学习成本，<strong class="highlight">减少新手前期失败次数，避免因反复失败的挫败感影响留存意愿</strong>。同时，结合"洲年庆"这一关键拉新回流节点，分类引导的举措<strong class="highlight">可以帮助了解新流入玩家群体中零基础和有基础的玩家比例，便于后续更有针对性的运营规划和活动设计开展</strong>。</p>
+
+    <div class="spacer"></div>
+
+    <h2 class="subsection-title" id="section3-2"><span class="num">3.2</span>多人合作闯关玩法</h2>
+
+    <div class="image-block">
+      <img src="images/image6.jpeg" alt="游戏玩法模式示意图">
+    </div>
+
+    <p class="body-text">如图所示，当前游戏内的主要玩法模式均强调"高竞技性"，虽有组队合作，但在PVP对局中仍以攻击、反制对手为主，而二次元品类游戏大多以PVE为主，竞技性较低，且玩家间组队社交玩法往往也不具有强对抗性（如《原神》访问好友世界玩法、《明日方舟》"促融共竞"中的合作通关玩法等）。因此，在"洲年庆"这一核心节点，<strong class="highlight">可以通过多人合作闯关这一PVE玩法，结合当前赛季背景故事，创造更具有叙事沉浸感且贴近二次元用户偏好的玩法，以此提高这类用户的活跃度和长期留存意愿</strong>。玩法设计简介如下：</p>
+
+    <div class="table-wrapper">
+      <table class="doc-table">
+        <tbody>
+          <tr>
+            <td class="col-label">活动名称</td>
+            <td>硝烟追忆</td>
+          </tr>
+          <tr>
+            <td class="col-label">玩法</td>
+            <td><strong class="highlight">PVE多人合作闯关</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label">定位</td>
+            <td><strong class="highlight">限时娱乐玩法</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label">背景设定</td>
+            <td>G.T.I.收到一则紧急消息，告知阿萨拉卫队将进行一项秘密军事行动，具有潜在威胁。为此，玩家需要组队前去调查，并阻止阿萨拉卫队的行动。然而，在调查过程中，更深层次的秘密逐渐浮现……</td>
+          </tr>
+          <tr>
+            <td class="col-label">核心机制</td>
+            <td>
+              <ul class="doc-list">
+                <li><strong class="highlight">解谜玩法</strong>：玩家需要相互配合，在抵御阿萨拉卫队进攻的同时，解开地图上的谜题装置，获取推动故事和战斗进程的关键信息和道具；</li>
+                <li><strong class="highlight">叙事驱动</strong>：在游戏开始前、解谜完成后以及对局结束后，均会有剧情过场及对白。同时，解谜完成后才可以进入最终关卡，迎战boss；</li>
+                <li><strong class="highlight">多分支结局</strong>：游戏具有5个分支结局，每个结局具有不同道具，通过特定道具交互抵达不同结局；</li>
+                <li><strong class="highlight">保留搜打撤机制</strong>：可以带走局内获得的物资；</li>
+                <li><strong class="highlight">减轻失败惩罚</strong>：减少对局失败损失的物资</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label">玩法乐趣</td>
+            <td>
+              <ul class="doc-list">
+                <li>沉浸式的叙事体验及世界观拓展；</li>
+                <li>玩家之间合作完成任务的满足感；</li>
+                <li>体验并收集不同结局的收集乐趣</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label">玩法奖励</td>
+            <td>
+              <ul class="doc-list">
+                <li>结局收集奖励：干员或枪械皮肤等具有吸引力的高价值物资</li>
+                <li>活跃游玩奖励：通过对局数等进度获得其他具有吸引力的奖励</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-text">综上所述，该玩法在保留搜打撤的核心循环基础上，增加了二次元用户偏好的叙事要素，同时减轻竞技性压力。作为限时的、偏娱乐向的玩法，<strong class="highlight">既能够调节游戏节奏，又能够吸引注重叙事和情感连接的二次元用户，同时其叙事性也有带动社区讨论的传播属性和效益，能够提升二次元用户的活跃和持续游玩意愿</strong>。</p>
+
+    <div class="spacer"></div>
+
+    <h2 class="subsection-title" id="section3-3"><span class="num">3.3</span>二次元IP异业联动</h2>
+
+    <p class="body-text"><strong class="highlight">2025年，三角洲行动与明日方舟进行了联动</strong>，上线了联动干员外观、联动主题枪械、多种联动玩法等联动内容，在两款游戏的玩家社群中引发了<strong class="highlight">极高的讨论热度，也吸引了一部分非FPS核心用户的明日方舟玩家游玩三角洲行动，达成了较好的联动效益</strong>。</p>
+
+    <div class="image-block">
+      <img src="images/image7.png" alt="联动宣传网页截图">
+    </div>
+    <p class="image-caption">联动宣传网页截图</p>
+
+    <p class="body-text">同时，在2025年的"洲年庆"中，制作组官宣与《电锯惊魂》及《鹅鸭杀》联动，同样引发了较高的社区热度。基于已有的联动经验，以及二次元用户群体对ACGN及相关二创的内容偏好，<strong class="highlight">可以在"洲年庆"节点上继续推出二次元IP的异业联动，并开展配套的线上线下社群活动</strong>。以《鸣潮》为例，联动方案简介如下：</p>
+
+    <div class="table-wrapper">
+      <table class="doc-table">
+        <tbody>
+          <tr>
+            <td class="col-label-sm">联动IP</td>
+            <td>鸣潮</td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">选择原因</td>
+            <td>
+              <ul class="doc-list">
+                <li><strong class="highlight">IP调性</strong>：两款游戏均带有一定的"近未来""科幻感"调性，在调性上具有一定相似性；</li>
+                <li><strong class="highlight">商业潜力</strong>：在腾讯2025年的财报中，提及鸣潮对国际市场游戏的增量收入贡献；此外，鸣潮具有较高的社媒关注度，官方举办的生日会等线上活动，以及嘉年华等线下活动，均有良好的社区热度和传播效益；</li>
+                <li><strong class="highlight">玩家群体匹配度</strong>：相较于2D二次元游戏，鸣潮作为ARPG，对游戏操作与技术要求更高，和三角洲行动玩家群体的重合度应当更高，可以引发社区内共鸣与讨论热度</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">联动内容</td>
+            <td>
+              <ul class="doc-list">
+                <li>干员外观</li>
+                <li>联动枪械</li>
+                <li>联动玩法</li>
+                <li>联动音乐</li>
+                <li>联动周边</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">联动目标</td>
+            <td>
+              <ul class="doc-list">
+                <li>吸引鸣潮玩家及其他新进二次元用户，<strong class="highlight">拓宽用户群体</strong>；</li>
+                <li>通过提供情绪价值，吸引两款游戏"双修"玩家留存，<strong class="highlight">提升付费意愿</strong>；</li>
+                <li>营造社区热度，推动社媒讨论，<strong class="highlight">进一步提升游戏知名度和影响力</strong>；</li>
+                <li>积累二次元IP联动经验，<strong class="highlight">为后续可能的联动活动做准备</strong></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="subsection-title" id="section3-4"><span class="num">3.4</span>线上线下社群活动</h2>
+
+    <p class="body-text">针对二次元用户"为爱付费"以及参与同好活动的意愿，可以在"洲年庆"这一节点，<strong class="highlight">通过线上线下社群活动，针对二次元用户进行拉新</strong>，方案简介如下：</p>
+
+    <div class="table-wrapper">
+      <table class="doc-table">
+        <tbody>
+          <tr>
+            <td class="col-label-sm" style="background:#e8f4e8; color:#2e7d32;">活动形式</td>
+            <td style="background:#f0faf0; font-weight:600; color:#2e7d32;">线上</td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动名称</td>
+            <td><strong class="highlight">三角洲行动干员同人绘画活动</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动内容</td>
+            <td>结合当前赛季主题和背景故事，为相关干员绘制同人图，配上专属tag发布至各大社交平台，<strong class="highlight">根据热度进行奖金和游戏道具激励，同时提供参与奖励</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动目标</td>
+            <td>
+              <ul class="doc-list">
+                <li>迎合二次元玩家同人创作的"为爱发电"心理，吸引玩家更加深入了解IP内容，<strong class="highlight">提升用户对IP的忠诚度</strong>；</li>
+                <li><strong class="highlight">营造社区热度，并通过社媒平台拉新</strong>；</li>
+                <li>形成玩家共创的<strong class="highlight">良好创作生态</strong></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动风险预案</td>
+            <td>
+              <ul class="doc-list">
+                <li>需明确AI作品不可参加；</li>
+                <li>需禁止抄袭、描图等不当行为，如明确违规则取消奖励资格；</li>
+                <li>需明确不得出现不符合社会主义核心价值观的内容，否则取消奖励资格；</li>
+                <li>需关注用户反馈，结合各大社媒平台推流规则，给予玩家正反馈引导，并联合平台适当给予流量扶持</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="doc-table">
+        <tbody>
+          <tr>
+            <td class="col-label-sm" style="background:#fff3e0; color:#e65100;">活动形式</td>
+            <td style="background:#fff8f0; font-weight:600; color:#e65100;">线下</td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动名称</td>
+            <td><strong class="highlight">三角洲行动干员coser线下快闪活动</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动内容</td>
+            <td>结合当前赛季主题和背景故事，邀请coser扮演干员，配以立牌、KV板、游戏内热门道具模型等内容，<strong class="highlight">在线下设立互动打卡点，并对参与的玩家给予周边奖励</strong></td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动目标</td>
+            <td>
+              <ul class="doc-list">
+                <li>迎合二次元玩家参与同好线下活动的偏好，<strong class="highlight">提升用户对IP的忠诚度</strong>；</li>
+                <li><strong class="highlight">营造讨论热度，并通过线下实现直接触达</strong>；</li>
+                <li><strong class="highlight">形成可复制的线下cos快闪活动经验</strong>，并整合宣发物料，<strong class="highlight">形成线上线下宣发联动</strong></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label-sm">活动风险预案</td>
+            <td>
+              <ul class="doc-list">
+                <li>需考虑活动时间（是否空闲）、场地（大小和布局是否合适）、天气等因素；</li>
+                <li>需考虑活动现场安保，维持秩序；</li>
+                <li>需保证coser沟通对接流畅，确保coser能够按时到场；</li>
+                <li>需关注社媒评价及参与玩家反馈，以便后续活动进行优化</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- ===== 第4节 ===== -->
+    <h1 class="section-title" id="section4"><span class="num">4.</span>总结</h1>
+
+    <p class="body-text"><strong class="highlight">综上所述，三角洲行动的"洲年庆"是一次重要的用户扩圈机会</strong>。<strong class="highlight">对于扩充二次元用户群体而言，需要重点关注有针对性的新手引导、较为轻量化的活动体验、有情绪价值的IP联动，并增强游戏内容的社交与传播属性</strong>。若希望进一步拓盘，在保留核心射击玩法体验的同时，<strong class="highlight">也应当逐步提升产品对于泛用户的友好度和内容传播能力</strong>。</p>
+
+  </div>
+
+  <!-- ===== 页脚 ===== -->
+  <div class="doc-footer">
+    260513-三角洲行动海外运营实习生笔试-张宸 &nbsp;|&nbsp; 《三角洲行动》"洲年庆"二次元受众拓盘方案
+  </div>
+
+</div>
+
+</body>
+</html>
